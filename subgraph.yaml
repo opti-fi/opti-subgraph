@@ -1,0 +1,346 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: OptiFinance
+    network: base-sepolia
+    source:
+      address: "0xc34aE34Da7051ac971638d3F09FDF516Ea48C5c9"
+      abi: OptiFinance
+      startBlock: 21461817
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Deposit
+        - OwnershipTransferred
+        - Paused
+        - Swap
+        - Unpaused
+        - Withdrawal
+      abis:
+        - name: OptiFinance
+          file: ./abis/OptiFinance.json
+      eventHandlers:
+        - event: Deposit(indexed address,indexed address,indexed address,uint256)
+          handler: handleDeposit
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Paused(address)
+          handler: handlePaused
+        - event: Swap(indexed address,indexed address,indexed address,uint256)
+          handler: handleSwap
+        - event: Unpaused(address)
+          handler: handleUnpaused
+        - event: Withdrawal(indexed address,indexed address,indexed address,uint256)
+          handler: handleWithdrawal
+      file: ./src/opti-finance.ts
+  - kind: ethereum
+    name: MockStakingUniswap
+    network: base-sepolia
+    source:
+      address: "0x13aB00A1Fae23DCC5618690480cfdE86B04Bbaeb"
+      abi: MockStakingUniswap
+      startBlock: 21461817
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - APYUpdated
+        - EmergencyWithdraw
+        - PartialWithdraw
+        - Staked
+        - WithdrawAll
+      abis:
+        - name: MockStakingUniswap
+          file: ./abis/MockStakingUniswap.json
+      eventHandlers:
+        - event: APYUpdated(uint8,uint8)
+          handler: handleAPYUpdated
+        - event: EmergencyWithdraw(indexed address,uint256)
+          handler: handleEmergencyWithdraw
+        - event: PartialWithdraw(indexed address,uint256)
+          handler: handlePartialWithdraw
+        - event: Staked(indexed address,uint256,uint256)
+          handler: handleStaked
+        - event: WithdrawAll(indexed address,uint256)
+          handler: handleWithdrawAll
+      file: ./src/mock-staking-uniswap.ts
+  - kind: ethereum
+    name: MockStakingCardano
+    network: base-sepolia
+    source:
+      address: "0x64D28469CAa42C51C57f42aCfD975E8AC4C1b0D2"
+      abi: MockStakingUniswap
+      startBlock: 21465004
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - APYUpdated
+        - EmergencyWithdraw
+        - PartialWithdraw
+        - Staked
+        - WithdrawAll
+      abis:
+        - name: MockStakingUniswap
+          file: ./abis/MockStakingUniswap.json
+      eventHandlers:
+        - event: APYUpdated(uint8,uint8)
+          handler: handleAPYUpdated
+        - event: EmergencyWithdraw(indexed address,uint256)
+          handler: handleEmergencyWithdraw
+        - event: PartialWithdraw(indexed address,uint256)
+          handler: handlePartialWithdraw
+        - event: Staked(indexed address,uint256,uint256)
+          handler: handleStaked
+        - event: WithdrawAll(indexed address,uint256)
+          handler: handleWithdrawAll
+      file: ./src/mock-staking-uniswap.ts
+  - kind: ethereum
+    name: MockStakingAave
+    network: base-sepolia
+    source:
+      address: "0x55C30Ff712b97B3692fd4f838D13D84DE8Be38B4"
+      abi: MockStakingUniswap
+      startBlock: 21465008
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - APYUpdated
+        - EmergencyWithdraw
+        - PartialWithdraw
+        - Staked
+        - WithdrawAll
+      abis:
+        - name: MockStakingUniswap
+          file: ./abis/MockStakingUniswap.json
+      eventHandlers:
+        - event: APYUpdated(uint8,uint8)
+          handler: handleAPYUpdated
+        - event: EmergencyWithdraw(indexed address,uint256)
+          handler: handleEmergencyWithdraw
+        - event: PartialWithdraw(indexed address,uint256)
+          handler: handlePartialWithdraw
+        - event: Staked(indexed address,uint256,uint256)
+          handler: handleStaked
+        - event: WithdrawAll(indexed address,uint256)
+          handler: handleWithdrawAll
+      file: ./src/mock-staking-uniswap.ts
+  - kind: ethereum
+    name: MockStakingRenzo
+    network: base-sepolia
+    source:
+      address: "0xdbE2c044D5F350807c437A1b3748191FE9D83250"
+      abi: MockStakingUniswap
+      startBlock: 21465000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - APYUpdated
+        - EmergencyWithdraw
+        - PartialWithdraw
+        - Staked
+        - WithdrawAll
+      abis:
+        - name: MockStakingUniswap
+          file: ./abis/MockStakingUniswap.json
+      eventHandlers:
+        - event: APYUpdated(uint8,uint8)
+          handler: handleAPYUpdated
+        - event: EmergencyWithdraw(indexed address,uint256)
+          handler: handleEmergencyWithdraw
+        - event: PartialWithdraw(indexed address,uint256)
+          handler: handlePartialWithdraw
+        - event: Staked(indexed address,uint256,uint256)
+          handler: handleStaked
+        - event: WithdrawAll(indexed address,uint256)
+          handler: handleWithdrawAll
+      file: ./src/mock-staking-uniswap.ts
+  - kind: ethereum
+    name: MockStakingCompound
+    network: base-sepolia
+    source:
+      address: "0x71417c20c60eD165026336922925C4f25439B3a0"
+      abi: MockStakingUniswap
+      startBlock: 21464996
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - APYUpdated
+        - EmergencyWithdraw
+        - PartialWithdraw
+        - Staked
+        - WithdrawAll
+      abis:
+        - name: MockStakingUniswap
+          file: ./abis/MockStakingUniswap.json
+      eventHandlers:
+        - event: APYUpdated(uint8,uint8)
+          handler: handleAPYUpdated
+        - event: EmergencyWithdraw(indexed address,uint256)
+          handler: handleEmergencyWithdraw
+        - event: PartialWithdraw(indexed address,uint256)
+          handler: handlePartialWithdraw
+        - event: Staked(indexed address,uint256,uint256)
+          handler: handleStaked
+        - event: WithdrawAll(indexed address,uint256)
+          handler: handleWithdrawAll
+      file: ./src/mock-staking-uniswap.ts
+  - kind: ethereum
+    name: MockUNI
+    network: base-sepolia
+    source:
+      address: "0xbb072b81D265D4F574b324Cea7469C9369281Da0"
+      abi: MockUNI
+      startBlock: 21461816
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - EIP712DomainChanged
+        - OwnershipTransferred
+        - Transfer
+      abis:
+        - name: MockUNI
+          file: ./abis/MockUNI.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: EIP712DomainChanged()
+          handler: handleEIP712DomainChanged
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/mock-uni.ts
+  - kind: ethereum
+    name: MockWETH
+    network: base-sepolia
+    source:
+      address: "0x1133c55280Be106f985622bF56dcc7Fb3C3D6Ee0"
+      abi: MockUNI
+      startBlock: 21463262
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - EIP712DomainChanged
+        - OwnershipTransferred
+        - Transfer
+      abis:
+        - name: MockUNI
+          file: ./abis/MockUNI.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: EIP712DomainChanged()
+          handler: handleEIP712DomainChanged
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/mock-uni.ts
+  - kind: ethereum
+    name: MockUSDC
+    network: base-sepolia
+    source:
+      address: "0x8fD29CC673C16d0466D5eA0250dC3d040554F4a3"
+      abi: MockUNI
+      startBlock: 21461816
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - EIP712DomainChanged
+        - OwnershipTransferred
+        - Transfer
+      abis:
+        - name: MockUNI
+          file: ./abis/MockUNI.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: EIP712DomainChanged()
+          handler: handleEIP712DomainChanged
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/mock-uni.ts
+  - kind: ethereum
+    name: MockDAI
+    network: base-sepolia
+    source:
+      address: "0x9A410E847e6161c96C72a7C40beaDAD5c86ea6aE"
+      abi: MockUNI
+      startBlock: 21463270
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - EIP712DomainChanged
+        - OwnershipTransferred
+        - Transfer
+      abis:
+        - name: MockUNI
+          file: ./abis/MockUNI.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: EIP712DomainChanged()
+          handler: handleEIP712DomainChanged
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/mock-uni.ts
+  - kind: ethereum
+    name: MockUSDT
+    network: base-sepolia
+    source:
+      address: "0xaa7DcAae6C6e579A326B860572Da90A149Dc1266"
+      abi: MockUNI
+      startBlock: 21463267
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - EIP712DomainChanged
+        - OwnershipTransferred
+        - Transfer
+      abis:
+        - name: MockUNI
+          file: ./abis/MockUNI.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: EIP712DomainChanged()
+          handler: handleEIP712DomainChanged
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/mock-uni.ts
